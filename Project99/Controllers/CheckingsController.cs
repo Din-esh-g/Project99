@@ -66,8 +66,8 @@ namespace Project99.Controllers
                 //await _context.SaveChangesAsync();
 
 
-                //_context.Update(transaction);
-                //await _context.SaveChangesAsync();
+                _context.Update(transaction);
+                await _context.SaveChangesAsync();
 
 
 
@@ -125,8 +125,8 @@ namespace Project99.Controllers
                     //await _context.SaveChangesAsync();
 
 
-                    //_context.Update(transaction);
-                    //await _context.SaveChangesAsync();
+                    _context.Update(transaction);
+                    await _context.SaveChangesAsync();
                 }
                 else
                 {
@@ -148,6 +148,171 @@ namespace Project99.Controllers
 
 
         }
+
+        //Transfer
+        public IActionResult Transfer(int id)
+        {
+
+
+            ViewData["Id"] = id;
+            return View();
+
+
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Transfer(int id, int amount, int tid, string type)
+        {
+
+
+            try
+            {
+                Checking checking = new Checking();
+                checking = await _context.Checking.FirstOrDefaultAsync(c => c.accountNumber == id);
+
+                if (type == "checking")
+                {
+                    Checking tochecking = new Checking();
+                    tochecking = await _context.Checking.FirstOrDefaultAsync(c => c.accountNumber == tid);
+
+                    if (tochecking != null)
+                    {
+                        if (checking.Customers != tochecking.Customers)
+                        {
+                            ViewData["ErrorMessage"] = $"You can only transfer between your own accounts";
+                            return View();
+                        }
+                        else if (checking.Balance < amount)
+                        {
+                            ViewData["ErrorMessage"] = $"You tried to transfer ${amount} but your balance is only ${checking.Balance}";
+                            return View();
+                        }
+                        else
+                        {
+                            var newBalance = (checking.Balance - amount);
+                            checking.Balance = newBalance;
+
+                            Transaction transaction = new Transaction();
+                            transaction.accountNumber = id;
+                            transaction.accountType = "checking";
+                            transaction.amount = amount;
+                            transaction.date = DateTime.Now;
+                            transaction.type = "transer out";
+
+                            _context.Update(checking);
+                            await _context.SaveChangesAsync();
+
+
+                            //_context.Update(transaction);
+                            //await _context.SaveChangesAsync();
+
+
+                            var tonewBalance = (tochecking.Balance + amount);
+                            tochecking.Balance = tonewBalance;
+
+                            Transaction totransaction = new Transaction();
+                            totransaction.accountNumber = tid;
+                            totransaction.accountType = "checking";
+                            totransaction.amount = amount;
+                            totransaction.date = DateTime.Now;
+                            totransaction.type = "transfer in";
+
+                            _context.Update(tochecking);
+                            await _context.SaveChangesAsync();
+
+                            _context.Update(transaction);
+                            await _context.SaveChangesAsync();
+
+
+                        }
+                    }
+                    else
+                    {
+                        ViewData["ErrorMessage"] = $"Please enter a valid account to transfer into.";
+                        return View();
+                    }
+                }
+                else
+                {
+                    Business business = new Business();
+                    business = await _context.Business.FirstOrDefaultAsync(c => c.accountNumber == tid);
+
+
+
+                    if (business != null)
+                    {
+                        if (checking.Customers != business.Customers)
+                        {
+                            ViewData["ErrorMessage"] = $"You can only transfer between your own accounts";
+                            return View();
+                        }
+                        else if (checking.Balance < amount)
+                        {
+                            ViewData["ErrorMessage"] = $"You tried to transfer ${amount} but your balance is only ${checking.Balance}";
+                            return View();
+                        }
+                        else
+                        {
+                            var newBalance = (checking.Balance - amount);
+                            checking.Balance = newBalance;
+
+                            Transaction transaction = new Transaction();
+                            transaction.accountNumber = id;
+                            transaction.accountType = "checking";
+                            transaction.amount = amount;
+                            transaction.date = DateTime.Now;
+                            transaction.type = "transer out";
+
+
+                            _context.Update(checking);
+                            await _context.SaveChangesAsync();
+
+
+                            _context.Update(transaction);
+                            await _context.SaveChangesAsync();
+
+
+                            var tonewBalance = (business.Balance + amount);
+                            business.Balance = tonewBalance;
+
+                            Transaction totransaction = new Transaction();
+                            totransaction.accountNumber = tid;
+                            totransaction.accountType = "business";
+                            totransaction.amount = amount;
+                            totransaction.date = DateTime.Now;
+                            totransaction.type = "transfer in";
+
+
+                            _context.Update(business);
+                            await _context.SaveChangesAsync();
+
+                            _context.Update(transaction);
+                            await _context.SaveChangesAsync();
+                        }
+                    }
+                    else
+                    {
+                        ViewData["ErrorMessage"] = $"Please enter a valid account to transfer into.";
+                        return View();
+                    }
+                }
+            }
+            catch
+            {
+                ViewData["ErrorMessage"] = "There was a problem with your withdrawl please try again";
+                return View();
+            }
+            ViewData["ErrorMessage"] = "Transfer was sucessful";
+            return RedirectToAction(nameof(Index));//Home Index
+
+
+        }
+
+
+
+
 
 
 

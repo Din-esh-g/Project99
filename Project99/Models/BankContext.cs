@@ -29,6 +29,7 @@ namespace Project99.Models
         public DbSet<Business> Business { get; set; }
         public DbSet<Term> Term { get; set; }
         public DbSet<Loan> Loan { get; set; }
+        public DbSet<Project99.Models.Class.Transaction> Transaction { get; set; }
 
        // public DbSet<Transaction> Transaction { get; set; }
 

@@ -10,12 +10,28 @@
 <p>@ViewData["ErrorMessage"]</p>
 
 
-<form asp-action="Deposit">
+<!DOCTYPE html>
+<html>
+@*<body background="https://www.bankofhope.com/assets/files/eolNOvpg/InstallmentSaving_HPB_Img_122717.jpg">*@
+<body bgcolor="#afafaf">
 
-    
-                <label>How much do you want to deposit?</label>
-                <input type="number" name="amount" />
-                <input type="hidden" asp-for=@ViewData["Id"] />
-                <input type="submit" value="Deposit" class="btn btn-outline-primary" />
+    <h1>Welcome</h1>
+
+    <form asp-action="Deposit">
+
+
+        <label>How much do you want to deposit?</label>
+        <input type="number" name="amount" />
+        <input type="hidden" asp-for=@ViewData["Id"] />
+        <input type="submit" value="Deposit" class="btn btn-outline-primary" />
     </form>
+
+
+
+
+</body>
+</html>
+
+
+
 

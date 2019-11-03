@@ -21,9 +21,11 @@ namespace Project99.Models.Class
 
         [Display(Name = " Amount")]
         public double amount { get; set; }
+
         [Display(Name = "Transaction Date")]
         [DataType(DataType.Date)]
         public DateTime date { get; set; }
+
         [Display(Name = "Transaction Types")]
         public string type { get; set; }
 
@@ -32,6 +34,7 @@ namespace Project99.Models.Class
         public Checking Business { get; set; }
         public Checking Loan { get; set; }
         public Checking Term { get; set; }
+
         public static List<Transaction> TransactionList = new List<Transaction>();
 
 

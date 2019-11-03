@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Project99.Models.Class.Transaction>
+@{
+    ViewData["Title"] = "GetLog";
+}
+
+<h1>GetLog</h1>
+<a asp-controller="Transactions" asp-action="GetLast10" asp-route-id="@ViewData["Id"]" asp-route-type="@ViewData["Type"]">View Last 10 Transactions</a>
+@*<input type="datetime-local" name="bdaytime">*@
+
+<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.accountType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.accountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.accountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.accountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
