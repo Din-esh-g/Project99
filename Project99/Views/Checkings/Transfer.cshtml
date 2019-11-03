@@ -4,20 +4,48 @@
 @{
     ViewData["Title"] = "Transfer";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        
+    </style>
+</head>
+
+
+
 
 <h1>Transfer</h1>
 
 <p>@ViewData["ErrorMessage"]</p>
 
 
-<form asp-action="Transfer">
+<form asp-action="Transfer" style=" background-color = blue">
     <label>How much do you want to transfer?</label>
     <input type="number" name="amount" /><br />
     <input type="hidden" asp-for=@ViewData["Id"] />
-    <label>What is the account type of the account you would like to transfer to?</label><br />
+
+
+       
+    @*<label>What is the account type of the account you would like to transfer to?</label><br />
     <input type="radio" name="type" value="checking" checked> Checking<br>
-    <input type="radio" name="type" value="business"> Business<br>
+    <input type="radio" name="type" value="business"> Business<br>*@
+
+    <p>
+        <label>Type of Account Transfer </label>
+        <select id="listTransferAccount">
+            <option name=" type" value="checking">Checking</option>
+            <option name="type" value="Business">Business</option>
+            <option name="type" value="Loan">Loan</option>
+            <option name="type" value="Term">Term Deposit</option>
+        </select>
+    </p>
+
+
+
     <label>What is the account number of the account you would like to transfer to?</label>
     <input type="number" name="tid" /><br />
     <input type="submit" value="Transfer" class="btn btn-outline-success" />
 </form>
+</html>

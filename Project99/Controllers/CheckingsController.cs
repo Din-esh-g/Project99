@@ -349,6 +349,20 @@ namespace Project99.Controllers
         {
             if (ModelState.IsValid)
             {
+                Transaction transaction = new Transaction();
+                transaction.accountNumber = checking.accountNumber;
+                       
+                transaction.accountType = "checking";
+                transaction.amount = checking.Balance;
+                transaction.date = DateTime.Now;
+                transaction.type = "Opening";
+
+                _context.Update(transaction);
+                await _context.SaveChangesAsync();
+
+
+
+
                 _context.Add(checking);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

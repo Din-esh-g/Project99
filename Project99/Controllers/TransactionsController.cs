@@ -38,7 +38,7 @@ namespace Project99.Controllers
             ViewData["Type"] = type;
             var log = await _context.Transaction.Where(t => t.accountNumber == id && t.accountType == type).ToListAsync();
             var x = log.Count;
-            var newLog = log.Skip(x - 10);
+            var newLog = log.Skip(x - 20);
             return View("GetLog", newLog);
         }
 
