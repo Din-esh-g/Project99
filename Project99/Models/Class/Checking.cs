@@ -18,6 +18,7 @@ namespace Project99.Models.Class
         public int accountNumber { get; set; }
         [Display(Name = "Interest Rate")]
 
+        [Required(ErrorMessage = "Please enter Intereest rate.")]
         public double InterestRate { get; set; }
        
         [Display(Name = "Balance")]
@@ -29,6 +30,7 @@ namespace Project99.Models.Class
         
         
         [Display(Name = "Customer Id")]
+        
         public Customers Customers { get; set; }
 
        

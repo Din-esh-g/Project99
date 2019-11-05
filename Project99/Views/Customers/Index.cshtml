@@ -37,16 +37,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.lastName)
             </td>
-            
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>|
-                <a asp-action="Businesses" asp-route-id="@item.Id">Business</a> |
-                <a asp-action="Checkings" asp-route-id="@item.Id">Checking</a> |
-                <a asp-action="Loan" asp-route-id="@item.Id">Loan</a>|
-                <a asp-action="Terms" asp-route-id="@item.Id">Term </a>
+                             
+            <td>
+
+                <div class="col-md-12">
+                    <button class="btn btn-default" type="submit">@Html.ActionLink("Business", "Index", "Businesses", new { id=@item.Id},null) </button>
+                    <button class="btn btn-default" type="submit">@Html.ActionLink("Checking", "Index", "Checkings", new { id=@item.Id},null )</button>
+                    <button class="btn btn-default" type="submit">@Html.ActionLink("Terms", "Index", "Terms", new {id=@item.Id},null)</button>
+                    <button class="btn btn-default" type="submit">@Html.ActionLink("Loan", "Index", "Loans",new { id=@item.Id},null)</button>
+                </div>
+
             </td>
+
+
+
+            
         </tr>
 }
     </tbody>

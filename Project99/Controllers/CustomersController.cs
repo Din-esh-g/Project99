@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using Project99.Models;
 
 namespace Project99.Controllers
 {
+    [Authorize]
     public class CustomersController : Controller
     {
         private readonly BankContext _context;
@@ -18,10 +21,37 @@ namespace Project99.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <returns></returns>
+
+        //public ActionResult CustomerInfo(int customerId)
+        //{
+        //    // Fetch the customer from the Repository.
+        //    var customer = .FindById(customerId);
+
+        //    // Map domain to ViewModel.
+        //    var model = Mapper.Map<Customers, CustomerViewModel>(customer);
+
+        //    // Return strongly-typed view.
+        //    return View(Index);
+        //}
+
+
+
+
+
+
         // GET: Customers
         public async Task<IActionResult> Index()
         {
+
+
             return View(await _context.Customers.ToListAsync());
+
+
+
         }
 
         // GET: Customers/Details/5

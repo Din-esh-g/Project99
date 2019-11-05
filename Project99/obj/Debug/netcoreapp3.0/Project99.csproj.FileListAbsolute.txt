@@ -1,8 +1,6 @@
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Project99.csprojAssemblyReference.cache
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\staticwebassets\Project99.StaticWebAssets.Manifest.cache
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\staticwebassets\Project99.StaticWebAssets.xml
-C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Project99.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Project99.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Project99.RazorAssemblyInfo.cache
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Project99.RazorAssemblyInfo.cs
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Project99.AssemblyInfoInputs.cache
@@ -169,3 +167,7 @@ C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Razor\Vi
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Razor\Views\Transactions\Index.cshtml.g.cs
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Razor\Views\Transactions\GetLog.cshtml.g.cs
 C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Razor\Views\Shared\NavBar.cshtml.g.cs
+C:\Users\dines\source\repos\Project99\Project99\bin\Debug\netcoreapp3.0\AutoMapper.dll
+C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Project99.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Project99.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dines\source\repos\Project99\Project99\obj\Debug\netcoreapp3.0\Razor\Views\Businesses\withCustomerId.cshtml.g.cs

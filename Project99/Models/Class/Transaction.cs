@@ -28,7 +28,7 @@ namespace Project99.Models.Class
 
         [Display(Name = "Transaction Types")]
         public string type { get; set; }
-
+        [Display(Name = "Customer ID")]
         public Customers Customers { get; set; }
         public Checking Checking { get; set; }
         public Checking Business { get; set; }

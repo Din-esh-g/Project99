@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Project99.Models.Class;
 
 namespace Project99.Controllers
 {
+    [Authorize]
     public class TermsController : Controller
     {
         private readonly BankContext _context;
@@ -24,6 +26,10 @@ namespace Project99.Controllers
         {
             return View(await _context.Term.ToListAsync());
         }
+
+ 
+
+
 
         // GET: Terms/Details/5
         public async Task<IActionResult> Details(int? id)

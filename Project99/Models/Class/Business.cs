@@ -24,8 +24,8 @@ namespace Project99.Models.Class
         [DataType(DataType.Date)]
         public DateTime createdAt { get; set; }
       
-       // [Display(Name = "Customer Id")]
-        public Customers Customers { get; set; }
+       [Display(Name = "Customer Id")]
+        public virtual Customers Customers { get; set; }
 
 
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using Project99.Models.Class;
 
 namespace Project99.Controllers
 {
+    [Authorize]
     public class BusinessesController : Controller
     {
         private readonly BankContext _context;
@@ -23,37 +25,31 @@ namespace Project99.Controllers
         // GET: Businesses
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Business.ToListAsync());
         }
 
-        //Deposit Withdraw transfer
-
-       
 
 
 
-        /// <summary>
-        /// //////////////////
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IActionResult> MyBusiness()
+
+
+        public async Task<IActionResult> withCustomerId(int id)
         {
             try
             {
 
 
-                var id = sessionGetId();
-
-                var business = await _context.Business.Where(b => b.accountNumber == id).ToListAsync();
+                var customers = await _context.Customers.Where(b => b.Id == id).ToListAsync();
 
 
-                if (business.Count == 0)
+                if (customers.Count == 0)
                 {
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    return View(business);
+                    return View("withCustomerId");
                 }
             }
             catch
@@ -62,6 +58,21 @@ namespace Project99.Controllers
             }
 
         }
+
+
+
+
+        //Deposit Withdraw transfer
+
+
+
+
+
+        /// <summary>
+        /// //////////////////
+        /// </summary>
+        /// <returns></returns>
+
 
 
         public IActionResult Withdraw(int id)

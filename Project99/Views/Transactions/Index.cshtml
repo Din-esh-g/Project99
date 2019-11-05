@@ -4,7 +4,22 @@
     ViewData["Title"] = "Index";
 }
 
+    <head>
+        <style>
+            hr {
+                display: block;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+                margin-left: auto;
+                margin-right: auto;
+                border-style: inset;
+                border-width: 3px;
+            }
+        </style>
+    </head>
+
 <h1>All Transaction</h1>
+<hr />
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,10 +27,11 @@
 <table class="table">
     <thead>
         <tr>
+           
             <th>
                 @Html.DisplayNameFor(model => model.accountNumber)
             </th>
-          
+
             <th>
                 @Html.DisplayNameFor(model => model.accountType)
             </th>
